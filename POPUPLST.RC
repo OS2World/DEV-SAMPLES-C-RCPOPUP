@@ -1,0 +1,26 @@
+/*
+   Resource file for popuplst
+   Created by Rick Curry, 1992
+*/
+ 
+#include "os2.h"
+#include "popuplst.h"
+
+DLGTEMPLATE DLG_LISTBOX PRELOAD FIXED
+BEGIN
+    DIALOG "List of Options", DLG_LISTBOX, 3, 5, 140, 125,
+                FS_DLGBORDER | WS_VISIBLE, FCF_TITLEBAR
+    BEGIN
+        CTEXT "Select an item and press Enter",  DLG_TITLE,  3, 92, 135,  33, SS_TEXT|DT_WORDBREAK
+	CONTROL "", LB_1, 13,  33,  98, 57, WC_LISTBOX , WS_VISIBLE | WS_TABSTOP
+        PUSHBUTTON "Enter",                       DID_OK,  8,  14,  50, 16, WS_GROUP|BS_DEFAULT
+	PUSHBUTTON "Esc=Cancel",	      DID_CANCEL, 67,  14,  65, 16, WS_GROUP
+    END
+END
+ 
+POINTER ID_MAINWND popuplst.ico
+ 
+MENU    ID_MAINWND PRELOAD
+BEGIN
+ 
+END

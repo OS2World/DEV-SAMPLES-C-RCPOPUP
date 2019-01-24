@@ -1,0 +1,29 @@
+# Makefile for popuplst.EXE
+# Created by Rick Curry, 1992
+#
+
+# Abbreviations
+#
+
+CC      =       icc -c -O- -Ti -Sm -W3 /Ss /Kf-c+e+p+r+
+LF      =       /align:16 /codeview /map /pm:pm
+
+# Inference Rules
+#
+.c.obj:
+    $(CC) $*.c
+
+.rc.res:
+    rc -r $*.rc
+
+# Dependencies
+#
+popuplst.exe:    popuplst popuplst.def popuplst.obj popuplst.res
+    link386 $(LF) popuplst, popuplst.exe, popuplst.map, , popuplst.def
+    rc popuplst.res
+    mapsym popuplst
+
+popuplst.obj:    popuplst popuplst.c popuplst.h
+
+popuplst.res:    popuplst popuplst.h popuplst.ico popuplst.rc
+

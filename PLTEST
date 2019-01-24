@@ -1,0 +1,22 @@
+# Makefile for pltest.EXE
+# Created by Rick Curry, 1992
+#
+
+# Abbreviations
+#
+CC      =       icc -c -O- -Ti -W3 /Ss /Kf-c+e+p+r+ /Gm
+LF      =       /align:16 /codeview /map /pm:vio
+
+# Inference Rules
+#
+.c.obj:
+    $(CC) $*.c
+
+# Dependencies
+#
+pltest.exe : pltest.obj async.obj
+    link386 $(LF) pltest async, pltest.exe, NULL;
+
+pltest.obj:    pltest pltest.c
+
+async.obj:    async.c
